@@ -15,6 +15,8 @@
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
+  --section-gap: 28px;
+  --card-gap: 18px;
 }
 
 * {
@@ -47,6 +49,8 @@ a {
   width: min(1220px, calc(100% - 32px));
   margin: 0 auto;
   padding: 32px 0 56px;
+  display: grid;
+  gap: var(--section-gap);
 }
 
 .site-nav {
@@ -54,7 +58,6 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin-bottom: 18px;
   padding: 16px 20px;
   background: rgba(18, 24, 43, 0.8);
   border: 1px solid var(--line);
@@ -90,29 +93,24 @@ a {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.hero,
-.research-strip,
-.dashboard,
-.schema-panel,
-.exercise-panel,
-.playbook {
-  margin-bottom: 24px;
-}
-
 .hero {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
-  gap: 20px;
+  gap: var(--card-gap);
 }
 
 .page-hero {
   padding: 32px 34px;
-  margin-bottom: 24px;
   background: var(--paper);
   backdrop-filter: blur(12px);
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
+}
+
+main {
+  display: grid;
+  gap: var(--section-gap);
 }
 
 .hero-copy,
@@ -254,7 +252,7 @@ h3 {
 .dashboard {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 .mock-panel,
@@ -275,7 +273,6 @@ h3 {
 }
 
 .page-note {
-  margin-bottom: 24px;
   background:
     linear-gradient(135deg, rgba(57, 208, 200, 0.08), rgba(122, 140, 255, 0.08)),
     var(--paper);
@@ -288,8 +285,8 @@ h3 {
 .mock-grid {
   display: grid;
   grid-template-columns: 1.5fr 0.8fr;
-  gap: 18px;
-  margin-bottom: 18px;
+  gap: var(--card-gap);
+  margin-bottom: var(--card-gap);
 }
 
 .mock-card {
@@ -372,7 +369,7 @@ h3 {
 .schema-panel {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 pre,
@@ -395,25 +392,25 @@ pre {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 18px;
-  margin-bottom: 18px;
+  gap: var(--card-gap);
+  margin-bottom: 20px;
 }
 
 .exercise-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 .exercise-groups {
   display: grid;
-  gap: 20px;
+  gap: var(--section-gap);
 }
 
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 .topic-card {
@@ -450,9 +447,9 @@ pre {
 .group-heading {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
+  gap: var(--card-gap);
   align-items: end;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .group-summary {
@@ -468,7 +465,7 @@ pre {
   justify-content: space-between;
   align-items: start;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .exercise-meta {
@@ -513,7 +510,7 @@ pre {
   padding: 14px 16px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(57, 208, 200, 0.12);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .answer-label {
@@ -558,7 +555,7 @@ textarea:focus {
 
 .feedback-box,
 .hint-box {
-  margin-top: 14px;
+  margin-top: 16px;
   padding: 14px 16px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(173, 195, 255, 0.12);
@@ -566,7 +563,7 @@ textarea:focus {
 }
 
 .solution-box {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .inline-term {
@@ -580,7 +577,7 @@ textarea:focus {
 }
 
 .execution-box {
-  margin-top: 14px;
+  margin-top: 16px;
   padding: 14px 16px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(57, 208, 200, 0.16);
@@ -604,7 +601,7 @@ textarea:focus {
 .lab-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 18px;
+  gap: var(--card-gap);
 }
 
 .lab-card {
