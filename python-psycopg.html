@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python and Psycopg</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="topic" data-module="Python + Psycopg">
+    <div class="page-shell">
+      <nav class="site-nav">
+        <a class="brand-mark" href="index.html">DB Final Prep</a>
+        <div class="nav-links">
+          <a href="views.html">Views</a>
+          <a href="sql-functions.html">SQL Functions</a>
+          <a href="plpgsql.html">PLpgSQL</a>
+          <a href="python-psycopg.html">Python + Psycopg</a>
+        </div>
+      </nav>
+
+      <header class="page-hero">
+        <p class="eyebrow">TRACK 04</p>
+        <h1>Python + Psycopg</h1>
+        <p class="lede">
+          Command-line patterns, parameterised queries, result handling, and output formatting.
+        </p>
+        <div class="hero-actions">
+          <a href="#exercise-panel" class="primary-link">Open exercises</a>
+          <a href="index.html" class="ghost-button">Back to hub</a>
+          <button id="reset-progress" class="ghost-button" type="button">Reset progress</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="dashboard">
+          <div class="dashboard-card">
+            <p class="section-label">Track Progress</p>
+            <h2 id="progress-title">0 of 20 solved</h2>
+            <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
+            <p id="progress-detail" class="muted-text">No attempts saved yet.</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="section-label">Track Goal</p>
+            <h2>What good looks like</h2>
+            <p class="muted-text">Parameterised SQL, crisp branching, and exact output formatting.</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="section-label">Revision Note</p>
+            <h2>Script discipline</h2>
+            <p class="muted-text">Keep SQL for data work and Python for control flow and presentation.</p>
+          </div>
+        </section>
+
+        <section class="page-note">
+          <p class="section-label">Page Guidance</p>
+          <h2>Script-layer practice</h2>
+          <p class="muted-text">
+            The checker here focuses on structure and output patterns.
+          </p>
+        </section>
+
+        <section id="exercise-panel" class="exercise-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Interactive Practice</p>
+              <h2>Python + Psycopg exercises</h2>
+            </div>
+            <div class="legend">
+              <span class="tag easy">Core</span>
+              <span class="tag medium">Stretch</span>
+              <span class="tag hard">Exam</span>
+            </div>
+          </div>
+          <div id="exercise-groups" class="exercise-groups"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="exercise-template">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <div>
+            <p class="exercise-module"></p>
+            <h3 class="exercise-title"></h3>
+          </div>
+          <div class="exercise-meta">
+            <span class="tag difficulty-tag"></span>
+            <span class="attempt-state"></span>
+          </div>
+        </header>
+        <p class="exercise-prompt"></p>
+        <div class="exercise-details"></div>
+        <label class="answer-label">
+          Your answer
+          <textarea spellcheck="false"></textarea>
+        </label>
+        <div class="action-row">
+          <button class="check-button" type="button">Check structure</button>
+          <button class="execute-button ghost-button hidden" type="button">Run with SQL engine</button>
+          <button class="hint-button" type="button">Show hint</button>
+          <button class="solution-button" type="button">Show solution</button>
+          <button class="solve-button" type="button">Mark as solved</button>
+        </div>
+        <div class="feedback-box"></div>
+        <div class="execution-box hidden"></div>
+        <div class="hint-box hidden"></div>
+        <pre class="solution-box hidden"><code></code></pre>
+      </article>
+    </template>
+
+    <template id="group-template">
+      <section class="exercise-group">
+        <div class="group-heading">
+          <div>
+            <p class="section-label group-label"></p>
+            <h2 class="group-title"></h2>
+          </div>
+          <p class="muted-text group-summary"></p>
+        </div>
+        <div class="exercise-list"></div>
+      </section>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+    <script src="data.js"></script>
+    <script src="seed.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

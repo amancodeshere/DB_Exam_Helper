@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Final Prep Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="home" data-module="All">
+    <div class="page-shell">
+      <nav class="site-nav">
+        <a class="brand-mark" href="index.html">DB Final Prep</a>
+        <div class="nav-links">
+          <a href="views.html">Views</a>
+          <a href="sql-functions.html">SQL Functions</a>
+          <a href="plpgsql.html">PLpgSQL</a>
+          <a href="python-psycopg.html">Python + Psycopg</a>
+        </div>
+      </nav>
+
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">DATABASE SYSTEMS EXAM PREP</p>
+          <h1>Train by topic</h1>
+          <p class="lede">
+            Pick a track, practise in a focused workspace, then come back here for timed mixed papers.
+          </p>
+          <div class="hero-actions">
+            <a href="views.html" class="primary-link">Start with views</a>
+            <a href="#topic-directory" class="ghost-button">Choose a track</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>Included</h2>
+          <ul>
+            <li>Dedicated page per learning track</li>
+            <li>Timed mixed mock papers</li>
+            <li>Shared progress tracking</li>
+            <li>SQL lab for runnable practice</li>
+          </ul>
+        </aside>
+      </header>
+
+      <main>
+        <section class="dashboard">
+          <div class="dashboard-card">
+            <p class="section-label">Overall Progress</p>
+            <h2 id="progress-title">0 of 80 solved</h2>
+            <div class="progress-bar" aria-hidden="true">
+              <span id="progress-fill"></span>
+            </div>
+            <p id="progress-detail" class="muted-text">No attempts saved yet.</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="section-label">Best Flow</p>
+            <h2>Suggested order</h2>
+            <p class="muted-text">
+              Views, then SQL functions, then PLpgSQL, then Python and Psycopg.
+            </p>
+          </div>
+          <div class="dashboard-card">
+            <p class="section-label">Reset</p>
+            <h2>Fresh run</h2>
+            <p class="muted-text">
+              Clear saved drafts and solved state.
+            </p>
+            <div class="hero-actions">
+              <button id="reset-progress" class="ghost-button" type="button">
+                Reset progress
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="topic-directory" class="exercise-group">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Topic Tracks</p>
+              <h2>Choose a dedicated practice page</h2>
+            </div>
+          </div>
+          <div class="topic-grid">
+            <a class="topic-card" href="views.html">
+              <p class="section-label">Track 01</p>
+              <h3>Views and Query Design</h3>
+              <p>Reusable relations, joins, grouping, and aggregates.</p>
+            </a>
+            <a class="topic-card" href="sql-functions.html">
+              <p class="section-label">Track 02</p>
+              <h3>SQL Functions</h3>
+              <p>Scalar, set-returning, and table-valued functions.</p>
+            </a>
+            <a class="topic-card" href="plpgsql.html">
+              <p class="section-label">Track 03</p>
+              <h3>PLpgSQL</h3>
+              <p>Control flow, loops, validation, and edge cases.</p>
+            </a>
+            <a class="topic-card" href="python-psycopg.html">
+              <p class="section-label">Track 04</p>
+              <h3>Python + Psycopg</h3>
+              <p>CLI patterns, parameterised queries, and formatting.</p>
+            </a>
+          </div>
+        </section>
+
+        <section id="mock-panel" class="mock-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Timed Practice</p>
+              <h2>Mock paper generator</h2>
+            </div>
+          </div>
+          <div class="mock-grid">
+            <div class="mock-card">
+              <h3>Generate a paper</h3>
+              <p class="muted-text">
+                Build a balanced paper or focus on one track.
+              </p>
+              <div class="mock-controls">
+                <label>
+                  Questions
+                  <select id="mock-size">
+                    <option value="8">8</option>
+                    <option value="12" selected>12</option>
+                    <option value="16">16</option>
+                  </select>
+                </label>
+                <label>
+                  Minutes
+                  <select id="mock-minutes">
+                    <option value="30">30</option>
+                    <option value="45" selected>45</option>
+                    <option value="60">60</option>
+                    <option value="90">90</option>
+                  </select>
+                </label>
+                <label>
+                  Focus
+                  <select id="mock-focus"></select>
+                </label>
+              </div>
+              <div class="hero-actions">
+                <button id="generate-mock" class="check-button" type="button">Generate paper</button>
+                <button id="toggle-timer" class="ghost-button" type="button">Start timer</button>
+                <button id="reset-timer" class="ghost-button" type="button">Reset timer</button>
+              </div>
+            </div>
+            <div class="mock-card">
+              <h3>Exam clock</h3>
+              <p id="timer-display" class="timer-display">45:00</p>
+              <p id="timer-status" class="muted-text">Timer idle. Generate a paper, then start the clock.</p>
+            </div>
+          </div>
+          <div id="mock-paper" class="mock-paper"></div>
+        </section>
+
+        <section class="playbook">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Why It Works</p>
+              <h2>Focused pages</h2>
+            </div>
+          </div>
+          <div class="playbook-grid">
+            <article>
+              <h3>Lower cognitive load</h3>
+              <p>Each page keeps one mode of thinking active.</p>
+            </article>
+            <article>
+              <h3>Better sequencing</h3>
+              <p>Finish one track properly, then move to the next.</p>
+            </article>
+            <article>
+              <h3>Cleaner review</h3>
+              <p>Mock papers stay mixed, but gap-fixing stays focused.</p>
+            </article>
+            <article>
+              <h3>Static and deployable</h3>
+              <p>The site stays static, simple, and cheap to host.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+    <script src="data.js"></script>
+    <script src="seed.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

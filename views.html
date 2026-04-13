@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Views and Query Design</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="topic" data-module="Views">
+    <div class="page-shell">
+      <nav class="site-nav">
+        <a class="brand-mark" href="index.html">DB Final Prep</a>
+        <div class="nav-links">
+          <a href="views.html">Views</a>
+          <a href="sql-functions.html">SQL Functions</a>
+          <a href="plpgsql.html">PLpgSQL</a>
+          <a href="python-psycopg.html">Python + Psycopg</a>
+        </div>
+      </nav>
+
+      <header class="page-hero">
+        <p class="eyebrow">TRACK 01</p>
+        <h1>Views and Query Design</h1>
+        <p class="lede">
+          Reusable relations, joins, aggregates, and execution-backed SQL checking.
+        </p>
+        <div class="hero-actions">
+          <a href="#exercise-panel" class="primary-link">Open exercises</a>
+          <a href="index.html#mock-panel" class="ghost-button">Back to hub</a>
+          <button id="reset-progress" class="ghost-button" type="button">Reset progress</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="dashboard">
+          <div class="dashboard-card">
+            <p class="section-label">Track Progress</p>
+            <h2 id="progress-title">0 of 20 solved</h2>
+            <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
+            <p id="progress-detail" class="muted-text">No attempts saved yet.</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="section-label">Track Goal</p>
+            <h2>What good looks like</h2>
+            <p class="muted-text">Reduce repeated joins, preserve row grain, and handle tie-breaks clearly.</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="section-label">Execution Mode</p>
+            <h2>SQL runtime enabled</h2>
+            <p class="muted-text">Run view answers against the seeded browser database.</p>
+          </div>
+        </section>
+
+        <section class="page-note">
+          <p class="section-label">Page Guidance</p>
+          <h2>Run drafts after the structure check</h2>
+          <p class="muted-text">
+            This is the only track with execution-backed checking.
+          </p>
+        </section>
+
+        <section class="schema-panel">
+          <div>
+            <p class="section-label">Shared Practice Schema</p>
+            <h2>Mini university schema</h2>
+            <p class="muted-text">One schema, repeated patterns, faster recognition.</p>
+          </div>
+          <pre><code>Students(zid, family_name, given_names, country, status)
+Subjects(code, title, uoc, career)
+Terms(id, term_code, starting)
+Courses(id, subject, term, convenor)
+CourseEnrolments(student, course, mark, grade)
+Staff(id, family_name, given_names, school)
+Programs(code, name)
+ProgramEnrolments(id, student, program, term)
+Streams(code, name)
+StreamEnrolments(enrolment, stream)
+Requirements(id, owner_type, owner_code, req_type, name, min_uoc)
+RequirementCourses(requirement, subject)</code></pre>
+        </section>
+
+        <section class="lab-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">SQL Lab</p>
+              <h2>Run queries against a seeded practice database</h2>
+            </div>
+          </div>
+          <div class="lab-grid">
+            <div class="lab-card">
+              <p class="muted-text">Scratchpad for joins, helper views, and aggregates.</p>
+              <label class="answer-label">
+                SQL input
+                <textarea id="lab-sql" spellcheck="false">select c.subject, t.term_code, count(ce.student) as enrolments
+from Courses c
+join Terms t on t.id = c.term
+left join CourseEnrolments ce on ce.course = c.id
+group by c.subject, t.term_code
+order by c.subject, t.term_code;</textarea>
+              </label>
+              <div class="action-row">
+                <button id="run-lab-sql" class="check-button" type="button">Run SQL</button>
+                <button id="reset-lab-db" class="ghost-button" type="button">Reset database</button>
+              </div>
+              <div id="lab-status" class="feedback-box">SQL engine loading.</div>
+            </div>
+            <div class="lab-card">
+              <h3>Result table</h3>
+              <div id="lab-results" class="table-wrap"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exercise-panel" class="exercise-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Interactive Practice</p>
+              <h2>Views exercises</h2>
+            </div>
+            <div class="legend">
+              <span class="tag easy">Core</span>
+              <span class="tag medium">Stretch</span>
+              <span class="tag hard">Exam</span>
+            </div>
+          </div>
+          <div id="exercise-groups" class="exercise-groups"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="exercise-template">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <div>
+            <p class="exercise-module"></p>
+            <h3 class="exercise-title"></h3>
+          </div>
+          <div class="exercise-meta">
+            <span class="tag difficulty-tag"></span>
+            <span class="attempt-state"></span>
+          </div>
+        </header>
+        <p class="exercise-prompt"></p>
+        <div class="exercise-details"></div>
+        <label class="answer-label">
+          Your answer
+          <textarea spellcheck="false"></textarea>
+        </label>
+        <div class="action-row">
+          <button class="check-button" type="button">Check structure</button>
+          <button class="execute-button ghost-button hidden" type="button">Run with SQL engine</button>
+          <button class="hint-button" type="button">Show hint</button>
+          <button class="solution-button" type="button">Show solution</button>
+          <button class="solve-button" type="button">Mark as solved</button>
+        </div>
+        <div class="feedback-box"></div>
+        <div class="execution-box hidden"></div>
+        <div class="hint-box hidden"></div>
+        <pre class="solution-box hidden"><code></code></pre>
+      </article>
+    </template>
+
+    <template id="group-template">
+      <section class="exercise-group">
+        <div class="group-heading">
+          <div>
+            <p class="section-label group-label"></p>
+            <h2 class="group-title"></h2>
+          </div>
+          <p class="muted-text group-summary"></p>
+        </div>
+        <div class="exercise-list"></div>
+      </section>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+    <script src="data.js"></script>
+    <script src="seed.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
